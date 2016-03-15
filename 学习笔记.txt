@@ -1,0 +1,19 @@
+1、安装python 开发环境
+2、下载SDK Manager，安装其中一个版本
+3、环境变量，
+   变量名：ANDROID_SDK_HOME，值：启动CMD时窗口显示的默认路径
+   变量名：Path，值：追加SDK目录中，tools,platform-tools所在目录
+4、写的.py脚本要放到tools目录下，截图自动放在本目录下
+5、运行脚本之前要先启动安卓模拟器
+6、device.startActivity("package名/activity入口")，直接启用安装在手机中的app
+
+方法1.目录\tools\hierarchyviewer.bat工具可以用来查看应用程序的ID（name,activity,控件按钮等属性）
+   
+方法2.下载re-sign，之后，打开，把包拖进去，信息就出来了
+    
+方法3.aapt在sdk\builds-tools\目录下
+     以ES文件浏览器为例，命令行中切换到aapt.exe目录执行：aapt dump badging E:\apk\es3.apk
+     package: name=’com.xmd.manager’
+     launchable-activity: name=’com.xmd.manager.window.WelcomActivity’
+
+

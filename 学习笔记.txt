@@ -8,6 +8,7 @@
 6、device.startActivity("package名/activity入口")，直接启用安装在手机中的app
 
 方法1.目录\tools\hierarchyviewer.bat工具可以用来查看应用程序的ID（name,activity,控件按钮等属性）
+      点击Load View Hierarchy按钮查看应用程序的ID
    
 方法2.下载re-sign，之后，打开，把包拖进去，信息就出来了
     
@@ -16,4 +17,25 @@
      package: name=’com.xmd.manager’
      launchable-activity: name=’com.xmd.manager.window.WelcomActivity’
 
+
+7、monkeyrunner是基于JPython的，不是Python，
+   运行需要进入cmd命令行，目录切换到sdk的tools目录下执行monkeyrunner  scriptname.py
+
+#8、中文输入的问题
+
+Monkeyrunner默认只支持Ascii编码,所以遇到中文,目前是不能通过adb的input和type进行输入的.那么可以采用复制到PC剪贴板,然后到Android模拟器里边进行粘贴的方式.
+
+
+
+
+安卓模拟器文件管理：
+
+cmd  
+cd到安卓模拟器工作目录（如：D:\Program Files\Android\android-sdk\tools ）
+adb shell进入模拟器命令行， 
+ls列出文件列表 
+cd sdcardf进入sd卡 
+mkdir创建一个新的文件，便于日后管理 
+exit退出模拟器命令行 
+adb push 本地目录 手机目录   
 

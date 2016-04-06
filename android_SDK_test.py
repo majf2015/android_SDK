@@ -45,11 +45,53 @@ class MyMonkeyrunner:
         self.easy_device.touch(By.id('id/login'),md.DOWN_AND_UP)
         print "case_login"
 
-    def case_order_manage(self):
+    def case_order_accept(self):
+        mr.sleep(2.0)
+        self.easy_device.touch(By.id("id/order_manage"),md.DOWN_AND_UP)
+        self.easy_device.touch(By.id("id/toolbar_right_image"),md.DOWN_AND_UP)
+        mr.sleep(1.0)
+        self.easy_device.touch(By.id("id/order_filter_submit"),md.DOWN_AND_UP)
+        mr.sleep(1.0)
+        self.easy_device.touch(By.id("id/accept"),md.DOWN_AND_UP)
+        self.easy_device.touch(By.id("id/toolbar_back"), md.DOWN_AND_UP)
+        print "case_order_accept"
+
+    def case_order_complete(self):
         mr.sleep(1.0)
         self.easy_device.touch(By.id("id/order_manage"),md.DOWN_AND_UP)
+        self.easy_device.touch(By.id("id/toolbar_right_image"),md.DOWN_AND_UP)
+        self.easy_device.touch(By.id("id/order_filter_accepted"),md.DOWN_AND_UP)
+        self.easy_device.touch(By.id("id/complete"),md.DOWN_AND_UP)
         self.easy_device.touch(By.id("id/toolbar_back"), md.DOWN_AND_UP)
-        print "case_order_manage"
+        print "case_order_complete"
+
+    def case_order_failure(self):
+        mr.sleep(1.0)
+        self.easy_device.touch(By.id("id/order_manage"),md.DOWN_AND_UP)
+        self.easy_device.touch(By.id("id/toolbar_right_image"),md.DOWN_AND_UP)
+        self.easy_device.touch(By.id("id/order_filter_accepted"),md.DOWN_AND_UP)
+        self.easy_device.touch(By.id("id/failure"),md.DOWN_AND_UP)
+        self.easy_device.touch(By.id("id/toolbar_back"), md.DOWN_AND_UP)
+        print "case_order_failure"
+
+    def case_order_slide(self):
+        mr.sleep(1.0)
+        self.easy_device.touch(By.id("id/order_manage"),md.DOWN_AND_UP)
+        self.easy_device.touch(By.id("id/toolbar_right_image"),md.DOWN_AND_UP)
+        self.easy_device.touch(By.id("id/order_filter_accepted"),md.DOWN_AND_UP)
+        self.easy_device.touch(By.id("id/failure"),md.DOWN_AND_UP)
+        self.easy_device.touch(By.id("id/toolbar_back"), md.DOWN_AND_UP)
+        print "case_order_failure"
+
+    def case_order_reject(self):
+        mr.sleep(2.0)
+        self.easy_device.touch(By.id("id/order_manage"),md.DOWN_AND_UP)
+        self.easy_device.touch(By.id("id/toolbar_right_image"),md.DOWN_AND_UP)
+        self.easy_device.touch(By.id("id/order_filter_submit"),md.DOWN_AND_UP)
+        self.easy_device.touch(By.id("id/reject"),md.DOWN_AND_UP)
+        self.easy_device.touch(By.id("id/dialog_positive"),md.DOWN_AND_UP)
+        self.easy_device.touch(By.id("id/toolbar_back"), md.DOWN_AND_UP)
+        print "case_order_reject"
 
     def case_coupon_consume(self):
         mr.sleep(1.0)
@@ -77,9 +119,9 @@ class MyMonkeyrunner:
         #self.install_apk()
         #self.take_screem()
         self.case_login()
-        self.case_order_manage()
-        self.case_coupon_consume()
-        self.case_statistics()
+        self.case_order_accept()
+        #self.case_coupon_consume()
+        #self.case_statistics()
         #self.take_screem()
 
 test = MyMonkeyrunner()

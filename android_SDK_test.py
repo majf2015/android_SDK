@@ -29,6 +29,7 @@ class MyMonkeyrunner:
 
     def install_apk(self):
         self.device.installPackage(self.apk_url)
+        print "install apk success"
 
     def case_login(self):
         self.device.startActivity( component=self.apk_name_activity )
@@ -93,6 +94,18 @@ class MyMonkeyrunner:
         self.easy_device.touch(By.id("id/toolbar_back"), md.DOWN_AND_UP)
         print "case_order_reject"
 
+    def case_order_drag(self):
+        mr.sleep(1.0)
+        self.easy_device.touch(By.id("id/order_manage"),md.DOWN_AND_UP)
+        for i in range(5):
+            self.device.drag((190, 770), (190, 130),0.1,  5)
+            mr.sleep(1.0)
+        for i in range(5):
+            self.device.drag((190, 130), (190, 770),0.1,  5)
+            mr.sleep(1.0)
+        self.easy_device.touch(By.id("id/toolbar_back"), md.DOWN_AND_UP)
+        print "case_order_drag"
+
     def case_coupon_consume(self):
         mr.sleep(1.0)
         self.easy_device.touch(By.id("id/coupon_consume"), md.DOWN_AND_UP)
@@ -118,9 +131,10 @@ class MyMonkeyrunner:
         #self.take_screem()
         #self.install_apk()
         #self.take_screem()
-        self.case_login()
-        self.case_order_accept()
+        #self.case_login()
+        #self.case_order_accept()
         #self.case_coupon_consume()
+        self.case_order_drag()
         #self.case_statistics()
         #self.take_screem()
 

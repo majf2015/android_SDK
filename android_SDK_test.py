@@ -34,7 +34,6 @@ class MyMonkeyrunner:
     def case_login(self):
         self.device.startActivity( component=self.apk_name_activity )
         mr.sleep(3.0)
-        #self.device.type('helloworld')
         self.easy_device.touch(By.id('id/username'),md.DOWN_AND_UP)
         text = self.easy_device.getText(By.id('id/username'))
         self.device.press('KEYCODE_MOVE_END', md.DOWN_AND_UP)
@@ -47,58 +46,49 @@ class MyMonkeyrunner:
         print "case_login"
 
     def case_order_drag(self):
-        mr.sleep(1.0)
+        mr.sleep(2.0)
         self.easy_device.touch(By.id("id/order_manage"),md.DOWN_AND_UP)
-        for i in range(5):
+        for i in range(3):
             self.device.drag((190, 770), (190, 130),0.1,  5)
             mr.sleep(1.0)
         for i in range(5):
             self.device.drag((190, 130), (190, 770),0.1,  5)
-            mr.sleep(1.0)
-        #self.easy_device.touch(By.id("id/toolbar_back"), md.DOWN_AND_UP)
         print "case_order_drag"
 
     def case_order_accept(self):
-        mr.sleep(2.0)
-        self.easy_device.touch(By.id("id/order_manage"),md.DOWN_AND_UP)
         mr.sleep(1.0)
         self.easy_device.touch(By.id("id/accept"),md.DOWN_AND_UP)
-        self.easy_device.touch(By.id("id/toolbar_back"), md.DOWN_AND_UP)
+        #self.easy_device.touch(By.id("id/toolbar_back"), md.DOWN_AND_UP)
         print "case_order_accept"
 
     def case_order_complete(self):
         mr.sleep(1.0)
-        self.easy_device.touch(By.id("id/order_manage"),md.DOWN_AND_UP)
-        mr.sleep(1.0)
         self.easy_device.touch(By.id("id/complete"),md.DOWN_AND_UP)
-        self.easy_device.touch(By.id("id/toolbar_back"), md.DOWN_AND_UP)
         print "case_order_complete"
 
     def case_order_failure(self):
         mr.sleep(1.0)
-        self.easy_device.touch(By.id("id/order_manage"),md.DOWN_AND_UP)
-        mr.sleep(1.0)
         self.easy_device.touch(By.id("id/failure"),md.DOWN_AND_UP)
-        self.easy_device.touch(By.id("id/toolbar_back"), md.DOWN_AND_UP)
+        mr.sleep(1.0)
+        self.device.touch(400,222,md.DOWN_AND_UP)
         print "case_order_failure"
 
     def case_order_reject(self):
-        #mr.sleep(2.0)
-        #self.easy_device.touch(By.id("id/order_manage"),md.DOWN_AND_UP)
-        #mr.sleep(1.0)
-        #self.easy_device.touch(By.id("id/reject"),md.DOWN_AND_UP)
-        #mr.sleep(1.0)
-
-        by = By.id("id/dialog_positive")
-        hierachy_view = self.device.getHierarchyViewer()
-        view_node = hierachy_view.findViewById("id/dialog_positive")
-        self.easy_device.touch(by,md.DOWN_AND_UP)
-
-
-
-        #self.easy_device.touch(By.id("id/dialog_positive"),md.DOWN_AND_UP)
-        #self.easy_device.touch(By.id("id/toolbar_back"), md.DOWN_AND_UP)
+        mr.sleep(1.0)
+        self.easy_device.touch(By.id("id/reject"),md.DOWN_AND_UP)
+        mr.sleep(1.0)
+        self.device.touch(357,494,md.DOWN_AND_UP)
         print "case_order_reject"
+
+    def case_order_select(self, s):
+        mr.sleep(1.0)
+        self.easy_device.touch(By.id("id/toolbar_right"),md.DOWN_AND_UP)
+        mr.sleep(1.0)
+        if s == "order":
+            self.device.touch(400,222,md.DOWN_AND_UP)
+        elif s == "accepted":
+            self.device.touch(400,293,md.DOWN_AND_UP)
+        print "case_order_select"
 
     def case_coupon_consume(self):
         mr.sleep(1.0)
@@ -130,17 +120,19 @@ class MyMonkeyrunner:
         self.connect_device()
         #self.take_screem()
         #self.install_apk()
-        #self.take_screem()
+
         #self.case_login()
         #self.case_order_drag()
+        #self.case_order_select("order")
         #self.case_order_accept()
+        #self.case_order_accept()
+        #self.case_order_select("accepted")
         #self.case_order_complete()
-
-        #self.case_order_accept()
         #self.case_order_failure()
+        #self.case_order_select("order")
+        #self.case_order_reject()
 
-        self.case_order_reject()
-        #self.case_coupon_consume()
+        self.case_coupon_consume()
         #self.case_statistics()
         #self.take_screem()
 
